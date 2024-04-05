@@ -1,4 +1,4 @@
-#Zenoh-pico Deepsleep
+# Zenoh-pico Deepsleep
 
 The purpose of this project and research is to try and create a stable conenction of zenoh-pico under deepsleep conditions as it is currently unstable at best, downright abysmal at worst. 
 To explain DeepSleep without googling for 20 minutes: Arduino's have the ability to turn off all of it's compoonents except for the RTC components, this means the arduino will consume far less power 
