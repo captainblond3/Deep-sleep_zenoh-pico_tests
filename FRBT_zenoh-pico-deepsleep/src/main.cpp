@@ -2,16 +2,17 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <zenoh-pico.h>
+ #include <BluetoothSerial.h>
 
 #if Z_FEATURE_PUBLICATION == 1
 // WiFi-specific parameters
-#define SSID "SSID"
-#define PASS "PASS"
+#define SSID "ssid"
+#define PASS "pass"
 
 #define CLIENT_OR_PEER 0  // 0: Client mode; 1: Peer mode
 #if CLIENT_OR_PEER == 0
 #define MODE "client"
-#define CONNECT ""  // If empty, it will scout, set to static listening for best reliability
+#define CONNECT "udp/192.168.4.187:55671"  // If empty, it will scout, set to static listening for best reliability
 #elif CLIENT_OR_PEER == 1
 #define MODE "peer"
 #define CONNECT "udp/224.0.0.225:7447#iface=en0"
@@ -50,7 +51,7 @@ void zenohpub() {
 }
 void setup() {
     // Initialize Serial for debug
-    Serial.begin(115200);
+    Serial.begin(9600);
     while (!Serial) {
         delay(1000);
     }
@@ -76,7 +77,7 @@ void setup() {
     z_owned_session_t s = z_open(z_config_move(&config));
     if (!z_session_check(&s)) {
         Serial.println("Unable to open session!");
-        while (1) {
+        while (5) {
             ;
         }
     }
