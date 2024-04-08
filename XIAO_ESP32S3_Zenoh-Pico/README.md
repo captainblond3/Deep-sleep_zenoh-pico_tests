@@ -12,12 +12,12 @@ As far as i've tested the board is an excellent choice for connectivity due to i
 
 If deepsleep is added to the loop the zenoh connection has to be remade every loop, this however can be problematic if the zenoh connection to the router is not terminated before going into deepsleep. Should these precautions not be taken a common problem will appear where the board can connect to the wifi but not open a zenoh session. 
 
-![Image of the esp32s3 zenoh-pico failed to open session error and reboot](/main/images/zenohsessionfailure.png)
+![](https://github.com/captainblond3/Deep-sleep_zenoh-pico_tests/blob/main/images/zenohsessionfailure.png)
 
 The obvious first thing to try when you have a shaky/failing connection to a session is to set a listen address on the zenoh router: Using `zenohd -l tcp/192.168.x.xxx:xxxx` is a clear way to try and set a static address for client to connect to in theory. It is advisable to have the router running *before* setting up a client as it might miss the router otherwise.
 
 While trying to debug this issue i discovered a strange connectivity gimmick/fix. I had set my board to a static address but ran zenohd without a listening address to which it generated a new address, this address was the exact same as the previously set listening address but had a substantially increased rate of connectivity. The previous static address could fail 8-40 times with rebooting before connecting to a router whereas this 'lazy' method had near instant connectivity and reduced the fail rate by about half or less as the previous connection. 
 
-![Image of the automatic 'static' address](/main/images/zenohfind1.png)
+![](https://github.com/captainblond3/Deep-sleep_zenoh-pico_tests/blob/main/images/zenohfind1.png)
 
 This 'trick' is by no means the magic trick to make zenoh-pico work with a 100% reliabilit but for debugging purposes it certainly has it's uses. The fact it works might have to do with the disconnectivity issue embedded currently has but i'd have to check with zettascale engineers for this as i simply lack the knowledge and experience to prove this assumption.
