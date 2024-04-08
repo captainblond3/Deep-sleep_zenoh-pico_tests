@@ -12,7 +12,7 @@
 #define CLIENT_OR_PEER 0  // 0: Client mode; 1: Peer mode
 #if CLIENT_OR_PEER == 0
 #define MODE "client"
-#define CONNECT "udp/192.168.4.187:55671"  // If empty, it will scout, set to static listening for best reliability
+#define CONNECT "tcp/192.168.1.216:7447" // If empty, it will scout
 #elif CLIENT_OR_PEER == 1
 #define MODE "peer"
 #define CONNECT "udp/224.0.0.225:7447#iface=en0"
@@ -21,19 +21,20 @@
 #endif
 
 #define KEYEXPR "demo/example/zenoh-pico-pub"
-#define VALUE "[ARDUINO]{ESP32} Publication from Zenoh-Pico!"
+#define VALUE "[XIAO]{ESP32S3} Publication from Zenoh-Pico!"
 
 z_owned_publisher_t pub;
 static int idx = 0;
 
 void sleepfunc()
 {
-    z_put;
+    z_put; //attempt to close the zenoh connection
     Serial.println("disengaging zenoh");
     Serial.flush();
     delay(140);
     esp_deep_sleep_start();
 }
+
 void zenohpub() {
   char buf[256];
     sprintf(buf, "[%4d] %s", idx++, VALUE);
@@ -78,6 +79,7 @@ void setup() {
     if (!z_session_check(&s)) {
         Serial.println("Unable to open session!");
         while (5) {
+            sleepfunc(); // this is done to force a reboot, you can loop it but i've rarely seen it work or done.
             ;
         }
     }
@@ -106,8 +108,8 @@ void setup() {
 
 void loop() {
     zenohpub();
-    z_put; //close the session
-    delay(1000);
+    // z_put; //close the session
+    delay(3000); //longer delay to emulate a sensor and prevent overheating
     sleepfunc();
 }
 
