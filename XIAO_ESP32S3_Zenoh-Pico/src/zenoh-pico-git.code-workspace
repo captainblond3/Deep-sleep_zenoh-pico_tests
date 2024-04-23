@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"name": "FRBT_zenoh-pico-deepsleep",
+			"path": "../../FRBT_zenoh-pico-deepsleep"
+		},
+		{
+			"name": "XIAO_ESP32S3_Zenoh-Pico",
+			"path": ".."
+		}
+	],
+	"settings": {}
+}

@@ -20,4 +20,4 @@ While trying to debug this issue i discovered a strange connectivity gimmick/fix
 
 ![](https://github.com/captainblond3/Deep-sleep_zenoh-pico_tests/blob/main/images/zenohfind1.png)
 
-This 'trick' is by no means the magic trick to make zenoh-pico work with a 100% reliabilit but for debugging purposes it certainly has it's uses. The fact it works might have to do with the disconnectivity issue embedded currently has but i'd have to check with zettascale engineers for this as i simply lack the knowledge and experience to prove this assumption.
+This 'trick' is by no means the magic trick to make zenoh-pico work with a 100% reliability but for debugging purposes it certainly has it's uses. The fact it works might have to do with the disconnectivity issue embedded currently has but i'd have to check with zettascale engineers for this as i simply lack the knowledge and experience to prove this assumption.
