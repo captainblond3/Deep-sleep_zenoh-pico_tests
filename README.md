@@ -23,7 +23,7 @@ If you wish to try and recreate these setups be sure to check the platformio.ini
 
 - Zenoh Router unable to find anything on a listen address
     - While listen should work in theory i've found more reliable results to set the client to the main address of the zenoh router when booting and not setting a listen addres on the router. I can't confirm or deny why this works but it works a lot more reliable than scouting.
-    ![](https://github.com/captainblond3/Deep-sleep_zenoh-pico_tests/blob/main/images/zenohexample1)
+    ![](https://github.com/captainblond3/Deep-sleep_zenoh-pico_tests/blob/main/images/zenohexample1.png)
 
 - Zenoh-pico crashes when sending a message
     - the only condition under which zenoh-pico should crash a device (as far as I'm aware) is if zenoh-pico tries to publish a message without being connected to a router. So  check your code to see if a connection gets made before an attempt at publishing is made.

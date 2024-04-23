@@ -7,7 +7,7 @@ The Wireless stick lite v3 or HTIT for short is a heltec board with a modded esp
 There is a flash program but this shouldn't be necessary as it functions as a bootloader update and uploads a general test script that tries out lora, wifi and bluetooth. Should you need it you can find it on the website under 'Downloadable Resources" [link](https://resource.heltec.cn/download/Wireless_Stick_Lite_V3) Mind you this program only runs on windows and you'll still have to check the usb port in the script (i've tried to run it on linux but it's just not worth the effort)
 
 For whatever reason platformio does have the HTIT listed but this board doesn't  support the right chipset and will give a chipset error. So for starters use the heltec wifi lora v3 board as it seemingly works exactly the same but doesn't give the chipset error, the pinout should still be the same.
-![](https://github.com/captainblond3/Deep-sleep_zenoh-pico_tests/blob/main/images/heltec_example)
+![](https://github.com/captainblond3/Deep-sleep_zenoh-pico_tests/blob/main/images/heltec_example.png)
 
 There is a official heltec framework and while it does work it only works under arduino IDE and hasn't been supported fully so i'll leave it out as i don't use IDE often and prefer vscode + platformio
 
